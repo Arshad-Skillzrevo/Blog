@@ -1,19 +1,26 @@
-"use client";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import Link from "next/link";
 
-import { useState } from "react";
-import LoginForm from "@/components/LoginForm";
-import BlogEditor from "@/components/BlogEditor";
-import BlogTable from "@/components/BlogTable";
+export default function Admin(){
 
-export default function AdminPage() {
-  const [token, setToken] = useState(null);
+ return(
+  <ProtectedRoute>
 
-  if (!token) return <LoginForm setToken={setToken} />;
+   <div className="p-10">
 
-  return (
-    <div className="p-10 space-y-10">
-      <BlogEditor token={token} />
-      <BlogTable token={token} />
-    </div>
-  );
+    <h1 className="heading text-4xl text-[var(--skillz-blue)]">
+     Admin Dashboard
+    </h1>
+
+    <Link
+     href="/admin/blogs/create"
+     className="bg-[var(--skillz-orange)] text-white px-6 py-3 mt-6 inline-block"
+    >
+     Create Blog
+    </Link>
+
+   </div>
+
+  </ProtectedRoute>
+ );
 }
