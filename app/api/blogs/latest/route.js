@@ -12,7 +12,7 @@ export async function GET(request) {
     .order('publish_date', { ascending: false })
     .limit(limit)
 
-  return NextResponse.json({ data: (data || []).map(formatBlog) }, {
-    headers: { 'Access-Control-Allow-Origin': '*', 'Cache-Control': 's-maxage=30' }
-  })
+  return NextResponse.json({ data }, {
+  headers: { 'Access-Control-Allow-Origin': '*' }
+})
 }
